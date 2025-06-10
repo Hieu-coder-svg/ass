@@ -1,0 +1,24 @@
+name: Build
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  sonarqube:
+    name: SonarQube
+    runs-on: windows-latest  # Vì bạn đã chọn Windows trước đó
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Tắt shallow clone để phân tích chính xác hơn
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'  # Phiên bản Java, điều chỉnh nếu cần
+          distribution: 'temurin'
+      - name: Run SonarQube Analysis
+        run: ant sonar
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
