@@ -77,4 +77,11 @@
             <arg value="-Dsonar.login=${env.SONAR_TOKEN}" />
         </exec>
     </target>
+    <exec executable="${basedir}\sonar-scanner\bin\sonar-scanner.bat" failonerror="true">
+    <arg value="-Dsonar.projectKey=Hieu-coder-svg_ass"/>
+    <arg value="-Dsonar.organization=hieu-coder-svg"/>
+    <arg value="-Dsonar.sources=src"/>
+    <arg value="-Dsonar.host.url=https://sonarcloud.io"/>
+    <arg value="-Dsonar.login=${env.SONAR_TOKEN}"/>
+</exec>
 </project>
