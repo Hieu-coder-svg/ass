@@ -8,16 +8,20 @@ on:
 jobs:
   sonarqube:
     name: SonarQube
-    runs-on: windows-latest  # Vì bạn đã chọn Windows trước đó
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Tắt shallow clone để phân tích chính xác hơn
+          fetch-depth: 0
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          java-version: '11'  # Phiên bản Java, điều chỉnh nếu cần
+          java-version: '17'
           distribution: 'temurin'
+      - name: Install SonarScanner
+        run: |
+          choco install sonarscanner
+        shell: cmd
       - name: Run SonarQube Analysis
         run: ant sonar
         env:
