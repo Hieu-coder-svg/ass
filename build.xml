@@ -72,7 +72,7 @@
         <exec executable="sonar-scanner" failonerror="true">
             <arg value="-Dsonar.projectKey=Hieu-coder-svg_ass" />
             <arg value="-Dsonar.organization=hieu-coder-svg" />
-            <arg value="-Dsonar.sources=src" />  <!-- Điều chỉnh đường dẫn nguồn nếu cần -->
+            <arg value="-Dsonar.sources=F:\FPT\ki 4\PRJ\HieuNMHE186839-Assigment\Ass" />  <!-- Điều chỉnh đường dẫn nguồn nếu cần -->
             <arg value="-Dsonar.host.url=https://sonarcloud.io" />
             <arg value="-Dsonar.login=${env.SONAR_TOKEN}" />
         </exec>
