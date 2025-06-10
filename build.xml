@@ -68,11 +68,11 @@
     nbproject/build-impl.xml file. 
 
     -->
-    <target name="sonar" depends="compile">
+    <target name="sonar" depends="jar">
     <exec executable="sonar-scanner" failonerror="true">
-        <arg value="-Dsonar.projectKey=hieu-coder-svg_ass" />
+        <arg value="-Dsonar.projectKey=Hieu-coder-svg_ass" />
         <arg value="-Dsonar.organization=hieu-coder-svg" />
-        <arg value="-Dsonar.sources=." />
+        <arg value="-Dsonar.sources=src" />  <!-- Điều chỉnh đường dẫn nguồn nếu cần -->
         <arg value="-Dsonar.host.url=https://sonarcloud.io" />
         <arg value="-Dsonar.login=${env.SONAR_TOKEN}" />
     </exec>
