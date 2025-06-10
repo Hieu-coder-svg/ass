@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Sử dụng Linux runner như trong log
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -22,7 +22,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Build with Maven
-        run: mvn clean compile  # Thay bằng ./gradlew build nếu dùng Gradle, hoặc bỏ nếu không cần Java
+        run: mvn clean compile  # Bỏ bước này nếu không cần Java hoặc thay bằng ./gradlew build
 
       - name: Cache SonarScanner
         uses: actions/cache@v4
@@ -41,10 +41,3 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@v5.0.0
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        # Nếu không dùng sonar-project.properties, có thể truyền tham số:
-        # with:
-        #   args: >
-        #     -Dsonar.organization=rekhugopal
-        #     -Dsonar.projectKey=SonarCloudCodeAnalyisis
-        #     -Dsonar.python.coverage.reportPaths=coverage.xml
-        #     -Dsonar.java.binaries=target/classes  # Hoặc -Dsonar.exclusions=**/*.java
